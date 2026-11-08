@@ -12,7 +12,7 @@ async def main():
     #Use files we already have
     ezkl.gen_settings("network.onnx", "settings.json")
     ezkl.compile_circuit("network.onnx", "network.ezkl", "settings.json")
-    #grab srs or we cant progress
+    #grab srs or we cant progress (You will get an error here if on windows without the above code)
     await ezkl.get_srs(settings_path="settings.json", srs_path="kzg.srs")
     
     ezkl.setup("network.ezkl", "vk.key", "pk.key", "kzg.srs")
