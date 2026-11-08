@@ -24,14 +24,7 @@ except:
 
 sample = X_test[0:1] 
 
-torch.onnx.export(
-    model,
-    sample,
-    "network.onnx",
-    input_names=["input"],
-    output_names=["output"],
-    opset_version=14,
-)
+torch.onnx.export(model,sample,"network.onnx",input_names=["input"],output_names=["output"],opset_version=14,)
 
 with open("input.json", "w") as f:
     json.dump({"input_data": [sample.flatten().tolist()]}, f)
